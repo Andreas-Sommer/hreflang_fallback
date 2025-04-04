@@ -66,9 +66,10 @@ class HreflangFallbackEventListener
                 return true;
             case 1:
                 // hide default language -> check if current lang is not $language
-                return $this->sys_language_uid !== $language->getLanguageId();
+                return $language->getLanguageId() !== 0;
             case 2:
                 // hide if no translation exists -> so no fallback is possible
+                return $language->getLanguageId() === 0;
             case 3:
                 // combination of 1 and 2 -> nothing to add
             default:
