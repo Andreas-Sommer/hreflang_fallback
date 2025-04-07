@@ -36,6 +36,12 @@ class HreflangFallbackEventListener
         /** @var PageArguments $routing */
         $routing = $this->request->getAttribute('routing');
 
+        if($routing->getPageType() > 0)
+        {
+            // todo: do we need to remove hreflang meta tags here?
+            return;
+        }
+
         foreach ($this->request->getAttribute('site')->getLanguages() as $_ => $language)
         {
             $hrefLang = $language->getHreflang();
@@ -105,7 +111,11 @@ class HreflangFallbackEventListener
         if (empty($queryParams) === false)
         {
             $configParams = $this->extractParamsByConfig($queryParams);
-            if ($configParams !== null)
+            if (
+                $configParams !== null
+            //    && isset($configParams['params']['action'])
+            //    && isset($configParams['params']['controller'])
+            )
             {
                 $data = $configParams['params'];
                 unset($data['action']);
