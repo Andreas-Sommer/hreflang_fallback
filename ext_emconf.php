@@ -7,10 +7,10 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Andreas Sommer',
     'author_email' => 'sommer@belsignum.com',
     'state' => 'alpha',
-    'version' => '1.0.0',
+    'version' => '1.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-13.4.99',
+            'typo3' => '10.4.0-10.4.99',
         ],
     ],
     'autoload' => [
