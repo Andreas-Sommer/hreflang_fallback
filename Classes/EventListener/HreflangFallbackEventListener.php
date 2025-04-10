@@ -113,8 +113,8 @@ class HreflangFallbackEventListener
             $configParams = $this->extractParamsByConfig($queryParams);
             if (
                 $configParams !== null
-            //    && isset($configParams['params']['action'])
-            //    && isset($configParams['params']['controller'])
+                && isset($configParams['params']['action'])
+                && isset($configParams['params']['controller'])
             )
             {
                 $data = $configParams['params'];
