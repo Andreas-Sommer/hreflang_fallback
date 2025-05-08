@@ -86,6 +86,8 @@ class HreflangFallbackEventListener
     private function getPageLanguageConfig(PageArguments $routing): int
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('pages');
+        $queryBuilder->getRestrictions()->removeAll();
+
         $result = $queryBuilder
             ->select('l18n_cfg')
             ->from('pages')
