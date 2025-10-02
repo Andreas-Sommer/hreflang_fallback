@@ -21,8 +21,7 @@ class HreflangFallbackEventListener
     public function __construct(
         ConnectionPool $connectionPool,
         UriBuilder     $uriBuilder
-    )
-    {
+    ) {
         $this->connectionPool = $connectionPool;
         $this->uriBuilder = $uriBuilder;
     }
@@ -36,7 +35,7 @@ class HreflangFallbackEventListener
         /** @var PageArguments $routing */
         $routing = $this->request->getAttribute('routing');
 
-        if($routing->getPageType() > 0)
+        if ($routing->getPageType() > 0)
         {
             // todo: do we need to remove hreflang meta tags here?
             return;
@@ -108,7 +107,6 @@ class HreflangFallbackEventListener
             ->setCreateAbsoluteUri(true)
             ->setLanguage($language->getLanguageId());
 
-
         $queryParams = $this->request->getQueryParams();
         if (empty($queryParams) === false)
         {
@@ -117,8 +115,7 @@ class HreflangFallbackEventListener
                 $configParams !== null
                 && isset($configParams['params']['action'])
                 && isset($configParams['params']['controller'])
-            )
-            {
+            ) {
                 $data = $configParams['params'];
                 unset($data['action']);
                 unset($data['controller']);
@@ -159,8 +156,7 @@ class HreflangFallbackEventListener
 
     private function cleanRoutEnhancers(array $routeEnhancers): array
     {
-        return array_filter($routeEnhancers, function ($config)
-        {
+        return array_filter($routeEnhancers, function ($config) {
             return $config['type'] === 'Extbase';
         });
     }
@@ -187,8 +183,7 @@ class HreflangFallbackEventListener
             if (
                 strcasecmp($config['extension'], $queryPrefixParts['extension']) === 0
                 && strcasecmp($config['plugin'], $queryPrefixParts['plugin']) === 0
-            )
-            {
+            ) {
                 return true;
             }
         }
@@ -197,7 +192,7 @@ class HreflangFallbackEventListener
 
     private function configurationHandling(SiteLanguage $language): bool
     {
-        if($language->getLanguageId() === 0 || $language->enabled() === false)
+        if ($language->getLanguageId() === 0 || $language->enabled() === false)
         {
             return false;
         }
