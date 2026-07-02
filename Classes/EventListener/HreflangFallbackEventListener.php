@@ -172,7 +172,7 @@ class HreflangFallbackEventListener
         $partials = GeneralUtility::trimExplode('_', $partialStr, true);
         return [
             'extension' => $partials[0],
-            'plugin'    => $partials[1]
+            'plugin'    => $partials[1] ?? ''
         ];
     }
 
